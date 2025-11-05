@@ -73,7 +73,7 @@ export const EditPetPage = ({ petToEdit }) => {
                 <br/>
                 <button
                     onClick={editPet}
-                >Save Pet</button>
+                >Save Changes</button>
             </form>
         </div>
         
