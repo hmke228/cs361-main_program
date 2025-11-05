@@ -23,7 +23,7 @@ const petSchema = mongoose.Schema({
     species: {type: String},
     breed: {type: String},
     sex: {type: String},
-    dob: {type: Date},
+    dob: {type: String},
     weight: {type: Number}
 }, {collection: 'pets'}
 );
