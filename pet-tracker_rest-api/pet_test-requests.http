@@ -28,6 +28,7 @@ content-type: application/json
     "weight": 65
 }
 
+
 ### Request 3: Retrieve all
 GET http://localhost:3000/pets HTTP/1.1
 
@@ -36,7 +37,7 @@ GET http://localhost:3000/pets HTTP/1.1
 GET  http://localhost:3000/pets/{{HOTCH_ID}} HTTP/1.1
 
 
-### Request 4: Update Hotchner with weight 85
+### Request 5: Update Hotchner with weight 85
 PUT http://localhost:3000/pets/{{HOTCH_ID}} HTTP/1.1
 content-type: application/json
 
@@ -50,5 +51,5 @@ content-type: application/json
 }
 
 
-### Request 19: Delete Hotchner
+### Request 6: Delete Hotchner
 DELETE http://localhost:3000/pets/{{HOTCH_ID}} HTTP/1.1
