@@ -55,8 +55,8 @@ export const CreatePetPage = () => {
                             <select id="sex" value={sex} 
                             onChange={e => setSex(e.target.value)}>
                             <option value="" disabled>Select One</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                             </select>
                         <br/>
                             <label htmlFor="dob">Date of Birth: </label>

@@ -2,12 +2,13 @@ import '../App.css'
 import {  useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { MdOutlineDelete, MdOutlineEdit } from "react-icons/md";
-
+import ConfirmDelete from '../components/ConfirmDelete';
 
 function PetProfilePage({ setPetToEdit }) {
     const { id } = useParams();
     const [pet, setPet] = useState({});
     const navigate = useNavigate();
+    const [showConfirm, setShowConfirm] = useState(false);
 
     const loadPet = async () => {
         const response = await fetch(`/pets/${id}`);
@@ -49,9 +50,15 @@ function PetProfilePage({ setPetToEdit }) {
                 <p><strong>Sex: </strong> {pet.sex}</p>
                 <p><strong>Date of Birth: </strong> {pet.dob}</p>
                 <p><strong>Weight: </strong> {pet.weight} lbs</p>
-                <MdOutlineDelete onClick={() => onDelete(pet._id)} />
+                <MdOutlineDelete onClick={() => setShowConfirm(true)} />
                 <span> </span>
-                <MdOutlineEdit onClick={() => onEdit(pet)} />
+                <MdOutlineEdit onClick={() => onEdit(pet)} />    
+                {showConfirm && (
+                    <ConfirmDelete prompt={`Are you sure you want to delete ${pet.name}? 
+                    This action will result in the loss of pet data and cannot be undone.`}
+                    onConfirm={() => onDelete(pet._id)}
+                    onCancel={() => setShowConfirm(false)} />
+                )}
             </div>
         </div>
     );
