@@ -25,13 +25,17 @@ export const CreatePetPage = () => {
         } else {
             alert(`Failed to add pet. Status code = ${response.status}`);
         }
-        navigate("/");
+        navigate("/myPets");
 
     };
 
     return (
         <div>
-            <h1>Add A Pet</h1>
+            <br/>
+            <button id="back" onClick={() => navigate('/myPets')}>
+                Back
+            </button>
+            <h2>Add A Pet</h2>
             <form>
                 <fieldset>
                      <legend>Pet Information</legend>
@@ -50,11 +54,12 @@ export const CreatePetPage = () => {
                             <label htmlFor="sex">Sex: </label>
                             <select id="sex" value={sex} 
                             onChange={e => setSex(e.target.value)}>
+                            <option value="" disabled>Select One</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             </select>
                         <br/>
-                            <label htmlFor="dob">DOB: </label>
+                            <label htmlFor="dob">Date of Birth: </label>
                             <input type="text" id="dob" value={dob} placeholder="MM-DD-YY"
                             onChange={e => setDob(e.target.value)} />
                         <br/>

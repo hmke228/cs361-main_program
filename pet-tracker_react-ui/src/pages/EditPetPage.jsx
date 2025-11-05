@@ -26,13 +26,17 @@ export const EditPetPage = ({ petToEdit }) => {
         } else {
             alert(`Failed to edit pet information. Status code = ${response.status}`);
         }
-        navigate("/");
+        navigate(`/myPets/${petToEdit._id}`);
 
     };
 
     return (
         <div>
-            <h1>Edit Pet Information</h1>
+            <br/>
+            <button id="back" onClick={() => navigate(`/myPets/${petToEdit._id}`)}>
+                Back
+            </button>
+            <h2>Edit Pet Information</h2>
             <form>
                 <fieldset>
                      <legend>Pet Information</legend>
@@ -51,11 +55,12 @@ export const EditPetPage = ({ petToEdit }) => {
                             <label htmlFor="sex">Sex: </label>
                             <select id="sex" value={sex} 
                             onChange={e => setSex(e.target.value)}>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="" disabled>Select One</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                             </select>
                         <br/>
-                            <label htmlFor="dob">DOB: </label>
+                            <label htmlFor="dob">Date of Birth: </label>
                             <input type="text" id="dob" value={dob} placeholder="MM-DD-YY"
                             onChange={e => setDob(e.target.value)} />
                         <br/>

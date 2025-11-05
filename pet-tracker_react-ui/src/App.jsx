@@ -7,7 +7,7 @@ import EditPetPage from './pages/EditPetPage';
 import HomePage from './pages/HomePage';
 import CalendarPage from './pages/CalendarPage';
 import MyPetsPage from './pages/MyPetsPage';
-
+import PetProfilePage from './pages/PetProfilePage';
 
 
 function App() {
@@ -18,16 +18,17 @@ function App() {
       <div className="app">
         <header>
           <h1>Pet Health Tracker</h1>
-          <p>A simple way to log, monitor, and manage your pet's health.</p>
+          <p>A simple way to log, monitor, and manage your pet's health</p>
         </header>
           <Router>
               <Navigation/>
             <Routes>
-              <Route path="/" element={<HomePage setPetToEdit={setPetToEdit} />}></Route>
+              <Route path="/" element={<HomePage />}></Route>
               <Route path="/calendar" element={<CalendarPage />}></Route>
-              <Route path="/myPets" element={<MyPetsPage setPetToEdit={setPetToEdit} />}></Route>
+              <Route path="/myPets" element={<MyPetsPage />}></Route>
               <Route path="/createPet" element={<CreatePetPage />}></Route>
               <Route path="/editPet" element={<EditPetPage petToEdit={petToEdit} />}></Route>
+              <Route path="/myPets/:id" element={<PetProfilePage setPetToEdit={setPetToEdit} />}></Route>
             </Routes>
           </Router>
       </div>

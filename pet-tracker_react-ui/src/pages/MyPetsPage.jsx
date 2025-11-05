@@ -2,8 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import PetTable from '../components/PetTable';
 import {  useEffect, useState } from 'react';
 
-
-function MyPetsPage({ setPetToEdit }) {
+export const MyPetsPage = () => {
     const [pets, setPets] = useState([]);
     const navigate = useNavigate();
 
@@ -16,38 +15,18 @@ function MyPetsPage({ setPetToEdit }) {
     useEffect(() => {
             loadPets(); 
         }, []);
-
-    const onDelete = async (_id) => {
-        const response = await fetch(
-            `/pets/${_id}`,
-             { method: 'DELETE' }
-        );
-        if (response.status === 204) {
-        setPets(pets.filter( m => m._id !== _id))
-        } else {
-            alert(`Failed to delete pet with _id = ${_id}, status code = ${response.status}`)
-        }
-    };
-
-    const onEdit = async petToEdit => {
-        setPetToEdit(petToEdit);
-        navigate('/editPet');
-    };
     
-
     return (
-        <>
+        <div>
             <h2>My Pets</h2>
             <button onClick={() => navigate('/createPet')}>
                 + Add A Pet
             </button>
             <br/>
             <br/>
-            <PetTable pets={pets} onDelete={onDelete} onEdit={onEdit}></PetTable>
+            <PetTable pets={pets}></PetTable>
 
-        </>
-
-        
+        </div>
     );
 }
 
