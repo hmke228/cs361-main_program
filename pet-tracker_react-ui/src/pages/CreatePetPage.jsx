@@ -42,6 +42,7 @@ export const CreatePetPage = () => {
                         <label htmlFor="name">Name: </label>
                             <input type="text" id="name" value={name} required
                             onChange={e => setName(e.target.value)} />
+                            <span> (required) </span>
                         <br/>
                             <label htmlFor="species">Species: </label>
                             <input type="text" id="species" value={species}
